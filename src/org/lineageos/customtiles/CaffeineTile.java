@@ -32,7 +32,8 @@ public class CaffeineTile extends TileService {
     public void onStartListening() {
         super.onStartListening();
 
-        startService(new Intent(getApplicationContext(), WakelockService.class));
+        startServiceAsUser(new Intent(getApplicationContext(), WakelockService.class),
+                UserHandle.CURRENT);
         serviceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -54,6 +55,11 @@ public class CaffeineTile extends TileService {
     public void onStopListening() {
         super.onStopListening();
 
+        if (wakelockService != null && !wakelockService.isActive()) {
+            stopServiceAsUser(new Intent(getApplicationContext(), WakelockService.class),
+                    UserHandle.CURRENT);
+        }
+
         unbindService(serviceConnection);
     }
 
@@ -61,7 +67,8 @@ public class CaffeineTile extends TileService {
     public void onTileRemoved() {
         super.onTileRemoved();
 
-        stopService(new Intent(getApplicationContext(), WakelockService.class));
+        stopServiceAsUser(new Intent(getApplicationContext(), WakelockService.class),
+                UserHandle.CURRENT);
     }
 
     @Override

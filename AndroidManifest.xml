@@ -66,7 +66,7 @@
         <!-- ADB over network -->
         <service
             android:name=".AdbOverNetworkTile"
-            android:icon="@drawable/ic_network_adb_on"
+            android:icon="@drawable/ic_network_adb_off"
             android:label="@string/network_adb_label"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
@@ -110,7 +110,7 @@
         <!-- Caffeine-->
         <service
             android:name=".CaffeineTile"
-            android:icon="@drawable/ic_caffeine_on"
+            android:icon="@drawable/ic_caffeine_off"
             android:label="@string/caffeine_label"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
@@ -123,17 +123,6 @@
             android:name=".UsbTetherTile"
             android:icon="@drawable/ic_usb_tether_on"
             android:label="@string/usb_tether_label"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-        </service>
-
-        <!-- Battery saver -->
-        <service
-            android:name=".BatterySaverTile"
-            android:icon="@drawable/ic_battery_saver_on"
-            android:label="@string/battery_saver_label"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
